@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <root>
+    <file name="AbstractField_BehaviorDescriptor.java">
+      <unit at="11,0,17,0" name="DataDictionaryDSL.behavior.AbstractField_BehaviorDescriptor" />
+    </file>
+    <file name="AbstractStructure_BehaviorDescriptor.java">
+      <unit at="11,0,17,0" name="DataDictionaryDSL.behavior.AbstractStructure_BehaviorDescriptor" />
+    </file>
+    <file name="Aggregation_BehaviorDescriptor.java">
+      <unit at="11,0,17,0" name="DataDictionaryDSL.behavior.Aggregation_BehaviorDescriptor" />
+    </file>
+    <file name="BehaviorAspectDescriptor.java">
+      <unit at="13,0,41,0" name="DataDictionaryDSL.behavior.BehaviorAspectDescriptor" />
+    </file>
+    <file name="DataDictionary_BehaviorDescriptor.java">
+      <unit at="11,0,17,0" name="DataDictionaryDSL.behavior.DataDictionary_BehaviorDescriptor" />
+    </file>
+    <file name="Domain_BehaviorDescriptor.java">
+      <unit at="11,0,17,0" name="DataDictionaryDSL.behavior.Domain_BehaviorDescriptor" />
+    </file>
+    <file name="ExclusiveSpecialization_BehaviorDescriptor.java">
+      <unit at="11,0,17,0" name="DataDictionaryDSL.behavior.ExclusiveSpecialization_BehaviorDescriptor" />
+    </file>
+    <file name="FieldRef_BehaviorDescriptor.java">
+      <unit at="11,0,17,0" name="DataDictionaryDSL.behavior.FieldRef_BehaviorDescriptor" />
+    </file>
+    <file name="Field_BehaviorDescriptor.java">
+      <unit at="11,0,17,0" name="DataDictionaryDSL.behavior.Field_BehaviorDescriptor" />
+    </file>
+    <file name="NonExclusiveSpecialization_BehaviorDescriptor.java">
+      <unit at="11,0,17,0" name="DataDictionaryDSL.behavior.NonExclusiveSpecialization_BehaviorDescriptor" />
+    </file>
+    <file name="Predefined_BehaviorDescriptor.java">
+      <unit at="11,0,17,0" name="DataDictionaryDSL.behavior.Predefined_BehaviorDescriptor" />
+    </file>
+    <file name="Restriction_BehaviorDescriptor.java">
+      <unit at="11,0,17,0" name="DataDictionaryDSL.behavior.Restriction_BehaviorDescriptor" />
+    </file>
+    <file name="StructureField_BehaviorDescriptor.java">
+      <unit at="11,0,17,0" name="DataDictionaryDSL.behavior.StructureField_BehaviorDescriptor" />
+    </file>
+    <file name="UserDefined_BehaviorDescriptor.java">
+      <unit at="11,0,17,0" name="DataDictionaryDSL.behavior.UserDefined_BehaviorDescriptor" />
+    </file>
+  </root>
+</debug-info>
+
