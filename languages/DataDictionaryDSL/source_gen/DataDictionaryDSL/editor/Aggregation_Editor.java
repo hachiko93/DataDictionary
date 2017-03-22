@@ -14,12 +14,14 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
+import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
+import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandler;
+import jetbrains.mps.smodel.action.NodeFactoryManager;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
-import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
+import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.OldNewCompositeSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
@@ -66,58 +68,61 @@ public class Aggregation_Editor extends DefaultNodeEditor {
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, 0, false);
     editorCell.getStyle().putAll(style);
-    editorCell.addEditorCell(this.createRefNode_tbnvmd_a2a(editorContext, node));
+    editorCell.addEditorCell(this.createRefNodeList_tbnvmd_a2a(editorContext, node));
     return editorCell;
   }
-  private EditorCell createRefNode_tbnvmd_a2a(EditorContext editorContext, SNode node) {
-    SingleRoleCellProvider provider = new Aggregation_Editor.structureSingleRoleHandler_tbnvmd_a2a(node, MetaAdapterFactory.getContainmentLink(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be6L, 0x6855f68baae98b3aL, "structure"), editorContext);
-    return provider.createCell();
+  private EditorCell createRefNodeList_tbnvmd_a2a(EditorContext editorContext, SNode node) {
+    AbstractCellListHandler handler = new Aggregation_Editor.structureListHandler_tbnvmd_a2a(node, "structure", editorContext);
+    EditorCell_Collection editorCell = handler.createCells(editorContext, new CellLayout_Horizontal(), false);
+    editorCell.setCellId("refNodeList_structure");
+    editorCell.setRole(handler.getElementRole());
+    return editorCell;
   }
-  private class structureSingleRoleHandler_tbnvmd_a2a extends SingleRoleCellProvider {
-    public structureSingleRoleHandler_tbnvmd_a2a(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
-      super(ownerNode, containmentLink, context);
+  private static class structureListHandler_tbnvmd_a2a extends RefNodeListHandler {
+    public structureListHandler_tbnvmd_a2a(SNode ownerNode, String childRole, EditorContext context) {
+      super(ownerNode, childRole, context, false);
     }
-    protected EditorCell createChildCell(SNode child) {
-      myEditorContext.getCellFactory().pushCellContext();
-      myEditorContext.getCellFactory().setNodeLocation(new SNodeLocation.FromNode(child));
+    public SNode createNodeToInsert(EditorContext editorContext) {
+      SNode listOwner = super.getOwner();
+      return NodeFactoryManager.createNode(listOwner, editorContext, super.getElementRole());
+    }
+    public EditorCell createNodeCell(EditorContext editorContext, SNode elementNode) {
+      editorContext.getCellFactory().pushCellContext();
+      editorContext.getCellFactory().setNodeLocation(new SNodeLocation.FromNode(elementNode));
       try {
-        EditorCell editorCell = super.createChildCell(child);
-        editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(myOwnerNode, MetaAdapterFactory.getContainmentLink(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be6L, 0x6855f68baae98b3aL, "structure"), child));
-        editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(myOwnerNode, MetaAdapterFactory.getContainmentLink(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be6L, 0x6855f68baae98b3aL, "structure"), child));
-        installCellInfo(child, editorCell);
-        return editorCell;
+        EditorCell elementCell = super.createNodeCell(editorContext, elementNode);
+        this.installElementCellActions(this.getOwner(), elementNode, elementCell, editorContext);
+        return elementCell;
       } finally {
-        myEditorContext.getCellFactory().popCellContext();
+        editorContext.getCellFactory().popCellContext();
       }
     }
-
     protected boolean isCompatibilityMode() {
       return false;
     }
-
-    private void installCellInfo(SNode child, EditorCell editorCell) {
-      if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-        editorCell.setSubstituteInfo(new OldNewCompositeSubstituteInfo(myEditorContext, new SChildSubstituteInfo(editorCell, myOwnerNode, MetaAdapterFactory.getContainmentLink(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be6L, 0x6855f68baae98b3aL, "structure"), child), new DefaultChildSubstituteInfo(myOwnerNode, myContainmentLink.getDeclarationNode(), myEditorContext)));
-      }
-      if (editorCell.getRole() == null) {
-        editorCell.setRole("structure");
-      }
-    }
-    @Override
-    protected EditorCell createEmptyCell() {
-      myEditorContext.getCellFactory().pushCellContext();
-      myEditorContext.getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(myOwnerNode, MetaAdapterFactory.getContainmentLink(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be6L, 0x6855f68baae98b3aL, "structure")));
+    public EditorCell createEmptyCell(EditorContext editorContext) {
+      editorContext.getCellFactory().pushCellContext();
+      editorContext.getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(structureListHandler_tbnvmd_a2a.this.getOwner(), MetaAdapterFactory.getContainmentLink(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be7L, 0x47cfc78f1517b82dL, "structure")));
       try {
-        EditorCell editorCell = super.createEmptyCell();
-        editorCell.setCellId("empty_structure");
-        installCellInfo(null, editorCell);
-        return editorCell;
+        EditorCell emptyCell = null;
+        emptyCell = super.createEmptyCell(editorContext);
+        this.installElementCellActions(super.getOwner(), null, emptyCell, editorContext);
+        return emptyCell;
       } finally {
-        myEditorContext.getCellFactory().popCellContext();
+        editorContext.getCellFactory().popCellContext();
       }
     }
-    protected String getNoTargetText() {
-      return "<no structure>";
+    public void installElementCellActions(SNode listOwner, SNode elementNode, EditorCell elementCell, EditorContext editorContext) {
+      if (elementCell.getUserObject(AbstractCellListHandler.ELEMENT_CELL_ACTIONS_SET) == null) {
+        elementCell.putUserObject(AbstractCellListHandler.ELEMENT_CELL_ACTIONS_SET, AbstractCellListHandler.ELEMENT_CELL_ACTIONS_SET);
+        if (elementNode != null) {
+          elementCell.setAction(CellActionType.DELETE, new CellAction_DeleteNode(elementNode, CellAction_DeleteNode.DeleteDirection.FORWARD));
+          elementCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteNode(elementNode, CellAction_DeleteNode.DeleteDirection.BACKWARD));
+        }
+        if (elementCell.getSubstituteInfo() == null || elementCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
+          elementCell.setSubstituteInfo(new OldNewCompositeSubstituteInfo(myEditorContext, new SChildSubstituteInfo(elementCell, myOwnerNode, MetaAdapterFactory.getContainmentLink(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be7L, 0x47cfc78f1517b82dL, "structure"), elementNode), new DefaultChildSubstituteInfo(myOwnerNode, elementNode, super.getLinkDeclaration(), myEditorContext)));
+        }
+      }
     }
   }
   private EditorCell createConstant_tbnvmd_d0(EditorContext editorContext, SNode node) {

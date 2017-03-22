@@ -22,11 +22,10 @@ public class Restriction_Editor extends DefaultNodeEditor {
     editorCell.setBig(true);
     editorCell.addEditorCell(this.createConstant_wlgmgw_a0(editorContext, node));
     editorCell.addEditorCell(this.createProperty_wlgmgw_b0(editorContext, node));
-    editorCell.addEditorCell(this.createConstant_wlgmgw_c0(editorContext, node));
     return editorCell;
   }
   private EditorCell createConstant_wlgmgw_a0(EditorContext editorContext, SNode node) {
-    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, "(");
+    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, ", ");
     editorCell.setCellId("Constant_wlgmgw_a0");
     editorCell.setDefaultText("");
     return editorCell;
@@ -44,12 +43,6 @@ public class Restriction_Editor extends DefaultNodeEditor {
       EditorManager manager = EditorManager.getInstanceFromContext(editorContext);
       return manager.createNodeRoleAttributeCell(attributeConcept, provider.getRoleAttributeKind(), editorCell);
     } else
-    return editorCell;
-  }
-  private EditorCell createConstant_wlgmgw_c0(EditorContext editorContext, SNode node) {
-    EditorCell_Constant editorCell = new EditorCell_Constant(editorContext, node, ")");
-    editorCell.setCellId("Constant_wlgmgw_c0");
-    editorCell.setDefaultText("");
     return editorCell;
   }
 }

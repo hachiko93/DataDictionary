@@ -22,37 +22,37 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
       switch (switchIndex) {
         case 0:
           if (true) {
-            return Collections.<ConceptEditor>singletonList(new AbstractStructure_Editor());
+            return Collections.<ConceptEditor>singletonList(new Aggregation_Editor());
           }
           break;
         case 1:
           if (true) {
-            return Collections.<ConceptEditor>singletonList(new Aggregation_Editor());
+            return Collections.<ConceptEditor>singletonList(new DataDictionary_Editor());
           }
           break;
         case 2:
           if (true) {
-            return Collections.<ConceptEditor>singletonList(new DataDictionary_Editor());
+            return Collections.<ConceptEditor>singletonList(new ExclusiveSpecialization_Editor());
           }
           break;
         case 3:
           if (true) {
-            return Collections.<ConceptEditor>singletonList(new Domain_Editor());
+            return Collections.<ConceptEditor>singletonList(new Field_Editor());
           }
           break;
         case 4:
           if (true) {
-            return Collections.<ConceptEditor>singletonList(new ExclusiveSpecialization_Editor());
+            return Collections.<ConceptEditor>singletonList(new FieldRef_Editor());
           }
           break;
         case 5:
           if (true) {
-            return Collections.<ConceptEditor>singletonList(new Field_Editor());
+            return Collections.<ConceptEditor>singletonList(new NonExclusiveSpecialization_Editor());
           }
           break;
         case 6:
           if (true) {
-            return Collections.<ConceptEditor>singletonList(new FieldRef_Editor());
+            return Collections.<ConceptEditor>singletonList(new Predefined_Editor());
           }
           break;
         case 7:
@@ -62,7 +62,7 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
           break;
         case 8:
           if (true) {
-            return Collections.<ConceptEditor>singletonList(new StructureField_Editor());
+            return Collections.<ConceptEditor>singletonList(new UserDefined_Editor());
           }
           break;
         default:
@@ -81,5 +81,5 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     }
     return res;
   }
-  private static final Map<SAbstractConcept, Integer> indices_xbvbvu_a0a = buildConceptIndices(MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be6L, "DataDictionaryDSL.structure.AbstractStructure"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be8L, "DataDictionaryDSL.structure.Aggregation"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bdfL, "DataDictionaryDSL.structure.DataDictionary"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8b9dL, "DataDictionaryDSL.structure.Domain"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be9L, "DataDictionaryDSL.structure.ExclusiveSpecialization"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bd3L, "DataDictionaryDSL.structure.Field"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bdbL, "DataDictionaryDSL.structure.FieldRef"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bc6L, "DataDictionaryDSL.structure.Restriction"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be7L, "DataDictionaryDSL.structure.StructureField"));
+  private static final Map<SAbstractConcept, Integer> indices_xbvbvu_a0a = buildConceptIndices(MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be8L, "DataDictionaryDSL.structure.Aggregation"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bdfL, "DataDictionaryDSL.structure.DataDictionary"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be9L, "DataDictionaryDSL.structure.ExclusiveSpecialization"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bd3L, "DataDictionaryDSL.structure.Field"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bdbL, "DataDictionaryDSL.structure.FieldRef"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8beaL, "DataDictionaryDSL.structure.NonExclusiveSpecialization"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bb0L, "DataDictionaryDSL.structure.Predefined"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bc6L, "DataDictionaryDSL.structure.Restriction"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bb1L, "DataDictionaryDSL.structure.UserDefined"));
 }

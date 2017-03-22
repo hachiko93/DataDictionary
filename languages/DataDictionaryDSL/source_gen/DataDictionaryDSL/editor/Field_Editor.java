@@ -33,7 +33,6 @@ public class Field_Editor extends DefaultNodeEditor {
     editorCell.addEditorCell(this.createProperty_s65pvt_a0(editorContext, node));
     editorCell.addEditorCell(this.createConstant_s65pvt_b0(editorContext, node));
     editorCell.addEditorCell(this.createRefNode_s65pvt_c0(editorContext, node));
-    editorCell.addEditorCell(this.createRefNode_s65pvt_d0(editorContext, node));
     return editorCell;
   }
   private EditorCell createProperty_s65pvt_a0(EditorContext editorContext, SNode node) {
@@ -106,57 +105,6 @@ public class Field_Editor extends DefaultNodeEditor {
     }
     protected String getNoTargetText() {
       return "<no domain>";
-    }
-  }
-  private EditorCell createRefNode_s65pvt_d0(EditorContext editorContext, SNode node) {
-    SingleRoleCellProvider provider = new Field_Editor.restrictionSingleRoleHandler_s65pvt_d0(node, MetaAdapterFactory.getContainmentLink(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bd3L, 0x6855f68baae9ba1dL, "restriction"), editorContext);
-    return provider.createCell();
-  }
-  private class restrictionSingleRoleHandler_s65pvt_d0 extends SingleRoleCellProvider {
-    public restrictionSingleRoleHandler_s65pvt_d0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
-      super(ownerNode, containmentLink, context);
-    }
-    protected EditorCell createChildCell(SNode child) {
-      myEditorContext.getCellFactory().pushCellContext();
-      myEditorContext.getCellFactory().setNodeLocation(new SNodeLocation.FromNode(child));
-      try {
-        EditorCell editorCell = super.createChildCell(child);
-        editorCell.setAction(CellActionType.DELETE, new CellAction_DeleteSmart(myOwnerNode, MetaAdapterFactory.getContainmentLink(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bd3L, 0x6855f68baae9ba1dL, "restriction"), child));
-        editorCell.setAction(CellActionType.BACKSPACE, new CellAction_DeleteSmart(myOwnerNode, MetaAdapterFactory.getContainmentLink(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bd3L, 0x6855f68baae9ba1dL, "restriction"), child));
-        installCellInfo(child, editorCell);
-        return editorCell;
-      } finally {
-        myEditorContext.getCellFactory().popCellContext();
-      }
-    }
-
-    protected boolean isCompatibilityMode() {
-      return false;
-    }
-
-    private void installCellInfo(SNode child, EditorCell editorCell) {
-      if (editorCell.getSubstituteInfo() == null || editorCell.getSubstituteInfo() instanceof DefaultSubstituteInfo) {
-        editorCell.setSubstituteInfo(new OldNewCompositeSubstituteInfo(myEditorContext, new SChildSubstituteInfo(editorCell, myOwnerNode, MetaAdapterFactory.getContainmentLink(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bd3L, 0x6855f68baae9ba1dL, "restriction"), child), new DefaultChildSubstituteInfo(myOwnerNode, myContainmentLink.getDeclarationNode(), myEditorContext)));
-      }
-      if (editorCell.getRole() == null) {
-        editorCell.setRole("restriction");
-      }
-    }
-    @Override
-    protected EditorCell createEmptyCell() {
-      myEditorContext.getCellFactory().pushCellContext();
-      myEditorContext.getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(myOwnerNode, MetaAdapterFactory.getContainmentLink(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bd3L, 0x6855f68baae9ba1dL, "restriction")));
-      try {
-        EditorCell editorCell = super.createEmptyCell();
-        editorCell.setCellId("empty_restriction");
-        installCellInfo(null, editorCell);
-        return editorCell;
-      } finally {
-        myEditorContext.getCellFactory().popCellContext();
-      }
-    }
-    protected String getNoTargetText() {
-      return "<no restriction>";
     }
   }
 }
