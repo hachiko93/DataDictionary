@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
-  <dependency className="DataDictionaryDSL.behavior.AbstractField_BehaviorDescriptor" file="AbstractField_BehaviorDescriptor.java">
-    <classNode dependClassName="java.lang.Deprecated" />
-    <classNode dependClassName="java.lang.String" />
-  </dependency>
-  <dependency className="DataDictionaryDSL.behavior.AbstractStructure_BehaviorDescriptor" file="AbstractStructure_BehaviorDescriptor.java">
-    <classNode dependClassName="java.lang.Deprecated" />
-    <classNode dependClassName="java.lang.String" />
-  </dependency>
   <dependency className="DataDictionaryDSL.behavior.Aggregation_BehaviorDescriptor" file="Aggregation_BehaviorDescriptor.java">
     <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.String" />
@@ -21,6 +13,10 @@
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode extendsClassName="jetbrains.mps.core.aspects.behaviour.BaseBehaviorAspectDescriptor" />
+  </dependency>
+  <dependency className="DataDictionaryDSL.behavior.DataDictionaryFields_BehaviorDescriptor" file="DataDictionaryFields_BehaviorDescriptor.java">
+    <classNode dependClassName="java.lang.Deprecated" />
+    <classNode dependClassName="java.lang.String" />
   </dependency>
   <dependency className="DataDictionaryDSL.behavior.DataDictionary_BehaviorDescriptor" file="DataDictionary_BehaviorDescriptor.java">
     <classNode dependClassName="java.lang.Deprecated" />
@@ -50,11 +46,23 @@
     <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.String" />
   </dependency>
+  <dependency className="DataDictionaryDSL.behavior.Reference_BehaviorDescriptor" file="Reference_BehaviorDescriptor.java">
+    <classNode dependClassName="java.lang.Deprecated" />
+    <classNode dependClassName="java.lang.String" />
+  </dependency>
   <dependency className="DataDictionaryDSL.behavior.Restriction_BehaviorDescriptor" file="Restriction_BehaviorDescriptor.java">
     <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.String" />
   </dependency>
-  <dependency className="DataDictionaryDSL.behavior.StructureField_BehaviorDescriptor" file="StructureField_BehaviorDescriptor.java">
+  <dependency className="DataDictionaryDSL.behavior.Set_BehaviorDescriptor" file="Set_BehaviorDescriptor.java">
+    <classNode dependClassName="java.lang.Deprecated" />
+    <classNode dependClassName="java.lang.String" />
+  </dependency>
+  <dependency className="DataDictionaryDSL.behavior.StructureAsField_BehaviorDescriptor" file="StructureAsField_BehaviorDescriptor.java">
+    <classNode dependClassName="java.lang.Deprecated" />
+    <classNode dependClassName="java.lang.String" />
+  </dependency>
+  <dependency className="DataDictionaryDSL.behavior.StructureRef_BehaviorDescriptor" file="StructureRef_BehaviorDescriptor.java">
     <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.String" />
   </dependency>

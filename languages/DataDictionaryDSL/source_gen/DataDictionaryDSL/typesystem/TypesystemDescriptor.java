@@ -8,11 +8,15 @@ import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
 public class TypesystemDescriptor extends BaseHelginsDescriptor {
   public TypesystemDescriptor() {
     {
-      NonTypesystemRule_Runtime nonTypesystemRule = new check_AbstractStructure_NonTypesystemRule();
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_DataDictionaryFields_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {
       NonTypesystemRule_Runtime nonTypesystemRule = new check_Domain_NonTypesystemRule();
+      this.myNonTypesystemRules.add(nonTypesystemRule);
+    }
+    {
+      NonTypesystemRule_Runtime nonTypesystemRule = new check_StructureRef_NonTypesystemRule();
       this.myNonTypesystemRules.add(nonTypesystemRule);
     }
     {

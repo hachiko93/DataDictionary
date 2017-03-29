@@ -96,14 +96,6 @@
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
   </node>
-  <node concept="1TIwiD" id="1nuWNCdYSJ1">
-    <property role="EcuMT" value="1575964350294494145" />
-    <property role="TrG5h" value="AbstractField" />
-    <property role="R5$K7" value="true" />
-    <property role="R5$K2" value="false" />
-    <property role="3GE5qa" value="field" />
-    <ref role="1TJDcQ" node="1nuWNCdYSJA" resolve="AbstractStructure" />
-  </node>
   <node concept="1TIwiD" id="1nuWNCdYSJ6">
     <property role="EcuMT" value="1575964350294494150" />
     <property role="TrG5h" value="Restriction" />
@@ -119,7 +111,7 @@
     <property role="EcuMT" value="1575964350294494163" />
     <property role="3GE5qa" value="field" />
     <property role="TrG5h" value="Field" />
-    <ref role="1TJDcQ" node="1nuWNCdYSJ1" resolve="AbstractField" />
+    <ref role="1TJDcQ" node="2XxaSCSw1Fl" resolve="DataDictionaryFields" />
     <node concept="1TJgyj" id="6xlXCIEUlPm" role="1TKVEi">
       <property role="IQ2ns" value="7518186232693218646" />
       <property role="20lmBu" value="aggregation" />
@@ -127,15 +119,12 @@
       <property role="20lbJX" value="1" />
       <ref role="20lvS9" node="1nuWNCdYSIt" resolve="Domain" />
     </node>
-    <node concept="PrWs8" id="6xlXCIEUrCD" role="PzmwI">
-      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
-    </node>
   </node>
   <node concept="1TIwiD" id="1nuWNCdYSJr">
     <property role="EcuMT" value="1575964350294494171" />
-    <property role="3GE5qa" value="field" />
+    <property role="3GE5qa" value="ref" />
     <property role="TrG5h" value="FieldRef" />
-    <ref role="1TJDcQ" node="1nuWNCdYSJ1" resolve="AbstractField" />
+    <ref role="1TJDcQ" node="1nuWNCdYSJA" resolve="Reference" />
     <node concept="1TJgyj" id="1nuWNCdYSJs" role="1TKVEi">
       <property role="IQ2ns" value="1575964350294494172" />
       <property role="20lmBu" value="reference" />
@@ -156,53 +145,87 @@
       <property role="IQ2ns" value="1575964350294494179" />
       <property role="20lmBu" value="aggregation" />
       <property role="20kJfa" value="structure" />
-      <property role="20lbJX" value="0..n" />
-      <ref role="20lvS9" node="1nuWNCdYSJA" resolve="AbstractStructure" />
+      <property role="20lbJX" value="1..n" />
+      <ref role="20lvS9" node="2XxaSCSw1Fl" resolve="DataDictionaryFields" />
     </node>
   </node>
   <node concept="1TIwiD" id="1nuWNCdYSJA">
     <property role="EcuMT" value="1575964350294494182" />
-    <property role="TrG5h" value="AbstractStructure" />
-    <property role="3GE5qa" value="" />
+    <property role="TrG5h" value="Reference" />
+    <property role="3GE5qa" value="ref" />
     <property role="R5$K7" value="true" />
     <property role="R5$K2" value="false" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="PrWs8" id="6xlXCIEUlLN" role="PzmwI">
-      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
-    </node>
   </node>
   <node concept="1TIwiD" id="1nuWNCdYSJB">
     <property role="EcuMT" value="1575964350294494183" />
-    <property role="3GE5qa" value="structure" />
-    <property role="TrG5h" value="StructureField" />
+    <property role="3GE5qa" value="ref" />
+    <property role="TrG5h" value="StructureRef" />
     <property role="R5$K7" value="true" />
     <property role="R5$K2" value="false" />
-    <ref role="1TJDcQ" node="1nuWNCdYSJA" resolve="AbstractStructure" />
-    <node concept="1TJgyj" id="4vfLSWl5VwH" role="1TKVEi">
-      <property role="IQ2ns" value="5174573914220116013" />
+    <ref role="1TJDcQ" node="1nuWNCdYSJA" resolve="Reference" />
+    <node concept="1TJgyj" id="2XxaSCSw1EU" role="1TKVEi">
+      <property role="IQ2ns" value="3414057865176947386" />
+      <property role="20lmBu" value="reference" />
+      <property role="20kJfa" value="structureRef" />
+      <property role="20lbJX" value="1" />
+      <ref role="20lvS9" node="2XxaSCSvHAe" resolve="StructureAsField" />
+    </node>
+    <node concept="1TJgyj" id="2XxaSCSwdrh" role="1TKVEi">
+      <property role="IQ2ns" value="3414057865176995537" />
       <property role="20lmBu" value="aggregation" />
-      <property role="20kJfa" value="structure" />
-      <property role="20lbJX" value="1..n" />
-      <ref role="20lvS9" node="1nuWNCdYSJA" resolve="AbstractStructure" />
+      <property role="20kJfa" value="fields" />
+      <property role="20lbJX" value="0..n" />
+      <ref role="20lvS9" node="1nuWNCdYSJr" resolve="FieldRef" />
     </node>
   </node>
   <node concept="1TIwiD" id="1nuWNCdYSJC">
     <property role="EcuMT" value="1575964350294494184" />
     <property role="3GE5qa" value="structure" />
     <property role="TrG5h" value="Aggregation" />
-    <ref role="1TJDcQ" node="1nuWNCdYSJB" resolve="StructureField" />
+    <ref role="1TJDcQ" node="1nuWNCdYSJB" resolve="StructureRef" />
   </node>
   <node concept="1TIwiD" id="1nuWNCdYSJD">
     <property role="EcuMT" value="1575964350294494185" />
     <property role="3GE5qa" value="structure" />
     <property role="TrG5h" value="ExclusiveSpecialization" />
-    <ref role="1TJDcQ" node="1nuWNCdYSJB" resolve="StructureField" />
+    <ref role="1TJDcQ" node="1nuWNCdYSJB" resolve="StructureRef" />
   </node>
   <node concept="1TIwiD" id="1nuWNCdYSJE">
     <property role="EcuMT" value="1575964350294494186" />
     <property role="3GE5qa" value="structure" />
     <property role="TrG5h" value="NonExclusiveSpecialization" />
-    <ref role="1TJDcQ" node="1nuWNCdYSJB" resolve="StructureField" />
+    <ref role="1TJDcQ" node="1nuWNCdYSJB" resolve="StructureRef" />
+  </node>
+  <node concept="1TIwiD" id="2XxaSCSvHAe">
+    <property role="EcuMT" value="3414057865176865166" />
+    <property role="TrG5h" value="StructureAsField" />
+    <property role="3GE5qa" value="field" />
+    <ref role="1TJDcQ" node="2XxaSCSw1Fl" resolve="DataDictionaryFields" />
+    <node concept="1TJgyj" id="2XxaSCSvHAf" role="1TKVEi">
+      <property role="IQ2ns" value="3414057865176865167" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="reference" />
+      <property role="20lbJX" value="1..n" />
+      <ref role="20lvS9" node="1nuWNCdYSJA" resolve="Reference" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="2XxaSCSvHEl">
+    <property role="EcuMT" value="3414057865176865429" />
+    <property role="3GE5qa" value="structure" />
+    <property role="TrG5h" value="Set" />
+    <ref role="1TJDcQ" node="1nuWNCdYSJB" resolve="StructureRef" />
+  </node>
+  <node concept="1TIwiD" id="2XxaSCSw1Fl">
+    <property role="EcuMT" value="3414057865176947413" />
+    <property role="TrG5h" value="DataDictionaryFields" />
+    <property role="3GE5qa" value="field" />
+    <property role="R5$K7" value="true" />
+    <property role="R5$K2" value="false" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="2XxaSCSw7$l" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
   </node>
 </model>
 

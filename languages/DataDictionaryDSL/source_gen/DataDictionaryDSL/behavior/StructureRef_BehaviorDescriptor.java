@@ -9,7 +9,7 @@ package DataDictionaryDSL.behavior;
  * This class is not involved in the actual method invocation
  */
 @Deprecated
-public abstract class AbstractStructure_BehaviorDescriptor {
+public abstract class StructureRef_BehaviorDescriptor {
   public String getConceptFqName() {
     return null;
   }

@@ -23,7 +23,6 @@ public class check_UserDefined_NonTypesystemRule extends AbstractNonTypesystemRu
     while ((SNodeOperations.getParent(root) != null)) {
       root = SNodeOperations.getParent(root);
     }
-    // sta znaci ovaj koncept 
     for (SNode child : SNodeOperations.getNodeDescendants(root, MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bb1L, "DataDictionaryDSL.structure.UserDefined"), false, new SAbstractConcept[]{})) {
       if (userDefined != child) {
         {

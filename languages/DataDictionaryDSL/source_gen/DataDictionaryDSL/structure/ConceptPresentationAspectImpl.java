@@ -9,18 +9,20 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private final ConceptPresentation props_AbstractField = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_AbstractStructure = new ConceptPresentationBuilder().create();
   private final ConceptPresentation props_Aggregation = new ConceptPresentationBuilder().create();
   private final ConceptPresentation props_DataDictionary = new ConceptPresentationBuilder().create();
+  private final ConceptPresentation props_DataDictionaryFields = new ConceptPresentationBuilder().create();
   private final ConceptPresentation props_Domain = new ConceptPresentationBuilder().create();
   private final ConceptPresentation props_ExclusiveSpecialization = new ConceptPresentationBuilder().create();
   private final ConceptPresentation props_Field = new ConceptPresentationBuilder().create();
   private final ConceptPresentation props_FieldRef = new ConceptPresentationBuilder().create();
   private final ConceptPresentation props_NonExclusiveSpecialization = new ConceptPresentationBuilder().create();
   private final ConceptPresentation props_Predefined = new ConceptPresentationBuilder().create();
+  private final ConceptPresentation props_Reference = new ConceptPresentationBuilder().create();
   private final ConceptPresentation props_Restriction = new ConceptPresentationBuilder().create();
-  private final ConceptPresentation props_StructureField = new ConceptPresentationBuilder().create();
+  private final ConceptPresentation props_Set = new ConceptPresentationBuilder().create();
+  private final ConceptPresentation props_StructureAsField = new ConceptPresentationBuilder().create();
+  private final ConceptPresentation props_StructureRef = new ConceptPresentationBuilder().create();
   private final ConceptPresentation props_UserDefined = new ConceptPresentationBuilder().create();
 
   @Override
@@ -29,30 +31,34 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
       case 0:
-        return props_AbstractField;
-      case 1:
-        return props_AbstractStructure;
-      case 2:
         return props_Aggregation;
-      case 3:
+      case 1:
         return props_DataDictionary;
-      case 4:
+      case 2:
+        return props_DataDictionaryFields;
+      case 3:
         return props_Domain;
-      case 5:
+      case 4:
         return props_ExclusiveSpecialization;
-      case 6:
+      case 5:
         return props_Field;
-      case 7:
+      case 6:
         return props_FieldRef;
-      case 8:
+      case 7:
         return props_NonExclusiveSpecialization;
-      case 9:
+      case 8:
         return props_Predefined;
+      case 9:
+        return props_Reference;
       case 10:
         return props_Restriction;
       case 11:
-        return props_StructureField;
+        return props_Set;
       case 12:
+        return props_StructureAsField;
+      case 13:
+        return props_StructureRef;
+      case 14:
         return props_UserDefined;
     }
     throw new IllegalStateException("Unknown concept " + c);

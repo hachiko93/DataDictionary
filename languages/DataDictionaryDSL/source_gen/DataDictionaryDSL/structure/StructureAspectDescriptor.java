@@ -18,40 +18,44 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import jetbrains.mps.smodel.SNodePointer;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
-  private final Map<SConceptId, Integer> myIndexMap = new HashMap<SConceptId, Integer>(13);
-  /*package*/ final ConceptDescriptor myConceptAbstractField = createDescriptorForAbstractField();
-  /*package*/ final ConceptDescriptor myConceptAbstractStructure = createDescriptorForAbstractStructure();
+  private final Map<SConceptId, Integer> myIndexMap = new HashMap<SConceptId, Integer>(15);
   /*package*/ final ConceptDescriptor myConceptAggregation = createDescriptorForAggregation();
   /*package*/ final ConceptDescriptor myConceptDataDictionary = createDescriptorForDataDictionary();
+  /*package*/ final ConceptDescriptor myConceptDataDictionaryFields = createDescriptorForDataDictionaryFields();
   /*package*/ final ConceptDescriptor myConceptDomain = createDescriptorForDomain();
   /*package*/ final ConceptDescriptor myConceptExclusiveSpecialization = createDescriptorForExclusiveSpecialization();
   /*package*/ final ConceptDescriptor myConceptField = createDescriptorForField();
   /*package*/ final ConceptDescriptor myConceptFieldRef = createDescriptorForFieldRef();
   /*package*/ final ConceptDescriptor myConceptNonExclusiveSpecialization = createDescriptorForNonExclusiveSpecialization();
   /*package*/ final ConceptDescriptor myConceptPredefined = createDescriptorForPredefined();
+  /*package*/ final ConceptDescriptor myConceptReference = createDescriptorForReference();
   /*package*/ final ConceptDescriptor myConceptRestriction = createDescriptorForRestriction();
-  /*package*/ final ConceptDescriptor myConceptStructureField = createDescriptorForStructureField();
+  /*package*/ final ConceptDescriptor myConceptSet = createDescriptorForSet();
+  /*package*/ final ConceptDescriptor myConceptStructureAsField = createDescriptorForStructureAsField();
+  /*package*/ final ConceptDescriptor myConceptStructureRef = createDescriptorForStructureRef();
   /*package*/ final ConceptDescriptor myConceptUserDefined = createDescriptorForUserDefined();
 
   public StructureAspectDescriptor() {
-    myIndexMap.put(myConceptAbstractField.getId(), 0);
-    myIndexMap.put(myConceptAbstractStructure.getId(), 1);
-    myIndexMap.put(myConceptAggregation.getId(), 2);
-    myIndexMap.put(myConceptDataDictionary.getId(), 3);
-    myIndexMap.put(myConceptDomain.getId(), 4);
-    myIndexMap.put(myConceptExclusiveSpecialization.getId(), 5);
-    myIndexMap.put(myConceptField.getId(), 6);
-    myIndexMap.put(myConceptFieldRef.getId(), 7);
-    myIndexMap.put(myConceptNonExclusiveSpecialization.getId(), 8);
-    myIndexMap.put(myConceptPredefined.getId(), 9);
+    myIndexMap.put(myConceptAggregation.getId(), 0);
+    myIndexMap.put(myConceptDataDictionary.getId(), 1);
+    myIndexMap.put(myConceptDataDictionaryFields.getId(), 2);
+    myIndexMap.put(myConceptDomain.getId(), 3);
+    myIndexMap.put(myConceptExclusiveSpecialization.getId(), 4);
+    myIndexMap.put(myConceptField.getId(), 5);
+    myIndexMap.put(myConceptFieldRef.getId(), 6);
+    myIndexMap.put(myConceptNonExclusiveSpecialization.getId(), 7);
+    myIndexMap.put(myConceptPredefined.getId(), 8);
+    myIndexMap.put(myConceptReference.getId(), 9);
     myIndexMap.put(myConceptRestriction.getId(), 10);
-    myIndexMap.put(myConceptStructureField.getId(), 11);
-    myIndexMap.put(myConceptUserDefined.getId(), 12);
+    myIndexMap.put(myConceptSet.getId(), 11);
+    myIndexMap.put(myConceptStructureAsField.getId(), 12);
+    myIndexMap.put(myConceptStructureRef.getId(), 13);
+    myIndexMap.put(myConceptUserDefined.getId(), 14);
   }
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAbstractField, myConceptAbstractStructure, myConceptAggregation, myConceptDataDictionary, myConceptDomain, myConceptExclusiveSpecialization, myConceptField, myConceptFieldRef, myConceptNonExclusiveSpecialization, myConceptPredefined, myConceptRestriction, myConceptStructureField, myConceptUserDefined);
+    return Arrays.asList(myConceptAggregation, myConceptDataDictionary, myConceptDataDictionaryFields, myConceptDomain, myConceptExclusiveSpecialization, myConceptField, myConceptFieldRef, myConceptNonExclusiveSpecialization, myConceptPredefined, myConceptReference, myConceptRestriction, myConceptSet, myConceptStructureAsField, myConceptStructureRef, myConceptUserDefined);
   }
 
   @Override
@@ -63,30 +67,34 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     }
     switch (((int) index)) {
       case 0:
-        return myConceptAbstractField;
-      case 1:
-        return myConceptAbstractStructure;
-      case 2:
         return myConceptAggregation;
-      case 3:
+      case 1:
         return myConceptDataDictionary;
-      case 4:
+      case 2:
+        return myConceptDataDictionaryFields;
+      case 3:
         return myConceptDomain;
-      case 5:
+      case 4:
         return myConceptExclusiveSpecialization;
-      case 6:
+      case 5:
         return myConceptField;
-      case 7:
+      case 6:
         return myConceptFieldRef;
-      case 8:
+      case 7:
         return myConceptNonExclusiveSpecialization;
-      case 9:
+      case 8:
         return myConceptPredefined;
+      case 9:
+        return myConceptReference;
       case 10:
         return myConceptRestriction;
       case 11:
-        return myConceptStructureField;
+        return myConceptSet;
       case 12:
+        return myConceptStructureAsField;
+      case 13:
+        return myConceptStructureRef;
+      case 14:
         return myConceptUserDefined;
       default:
         throw new IllegalStateException();
@@ -103,41 +111,47 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     return (res == null ? -1 : res);
   }
 
-  private static ConceptDescriptor createDescriptorForAbstractField() {
-    return new ConceptDescriptorBuilder("DataDictionaryDSL.structure.AbstractField", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bc1L)).super_("DataDictionaryDSL.structure.AbstractStructure").version(1).super_(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be6L)).parents("DataDictionaryDSL.structure.AbstractStructure").parentIds(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be6L)).abstract_().sourceNode(new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494145")).create();
-  }
-  private static ConceptDescriptor createDescriptorForAbstractStructure() {
-    return new ConceptDescriptorBuilder("DataDictionaryDSL.structure.AbstractStructure", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be6L)).super_("jetbrains.mps.lang.core.structure.BaseConcept").version(1).super_(MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL)).parents("jetbrains.mps.lang.core.structure.BaseConcept", "jetbrains.mps.lang.core.structure.INamedConcept").parentIds(MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL), MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L)).abstract_().sourceNode(new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494182")).create();
-  }
   private static ConceptDescriptor createDescriptorForAggregation() {
-    return new ConceptDescriptorBuilder("DataDictionaryDSL.structure.Aggregation", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be8L)).super_("DataDictionaryDSL.structure.StructureField").version(1).super_(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be7L)).parents("DataDictionaryDSL.structure.StructureField").parentIds(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be7L)).sourceNode(new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494184")).create();
+    return new ConceptDescriptorBuilder("DataDictionaryDSL.structure.Aggregation", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be8L)).super_("DataDictionaryDSL.structure.StructureRef").version(1).super_(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be7L)).parents("DataDictionaryDSL.structure.StructureRef").parentIds(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be7L)).sourceNode(new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494184")).create();
   }
   private static ConceptDescriptor createDescriptorForDataDictionary() {
-    return new ConceptDescriptorBuilder("DataDictionaryDSL.structure.DataDictionary", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bdfL)).super_("jetbrains.mps.lang.core.structure.BaseConcept").version(1).super_(MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL)).parents("jetbrains.mps.lang.core.structure.BaseConcept", "jetbrains.mps.lang.core.structure.INamedConcept").parentIds(MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL), MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L)).childDescriptors(new ConceptDescriptorBuilder.Link(0x15def33a0dfb8be3L, "structure", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be6L), true, true, false, new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494179"))).children(new String[]{"structure"}, new boolean[]{true}).rootable().sourceNode(new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494175")).create();
+    return new ConceptDescriptorBuilder("DataDictionaryDSL.structure.DataDictionary", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bdfL)).super_("jetbrains.mps.lang.core.structure.BaseConcept").version(1).super_(MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL)).parents("jetbrains.mps.lang.core.structure.BaseConcept", "jetbrains.mps.lang.core.structure.INamedConcept").parentIds(MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL), MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L)).childDescriptors(new ConceptDescriptorBuilder.Link(0x15def33a0dfb8be3L, "structure", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x2f612b8a38801ad5L), false, true, false, new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494179"))).children(new String[]{"structure"}, new boolean[]{true}).rootable().sourceNode(new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494175")).create();
+  }
+  private static ConceptDescriptor createDescriptorForDataDictionaryFields() {
+    return new ConceptDescriptorBuilder("DataDictionaryDSL.structure.DataDictionaryFields", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x2f612b8a38801ad5L)).super_("jetbrains.mps.lang.core.structure.BaseConcept").version(1).super_(MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL)).parents("jetbrains.mps.lang.core.structure.BaseConcept", "jetbrains.mps.lang.core.structure.INamedConcept").parentIds(MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL), MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L)).abstract_().sourceNode(new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "3414057865176947413")).create();
   }
   private static ConceptDescriptor createDescriptorForDomain() {
     return new ConceptDescriptorBuilder("DataDictionaryDSL.structure.Domain", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8b9dL)).super_("jetbrains.mps.lang.core.structure.BaseConcept").version(1).super_(MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL)).parents("jetbrains.mps.lang.core.structure.BaseConcept").parentIds(MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL)).childDescriptors(new ConceptDescriptorBuilder.Link(0x47cfc78f151b2197L, "restriction", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bc6L), true, true, false, new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "5174573914220339607"))).children(new String[]{"restriction"}, new boolean[]{true}).abstract_().sourceNode(new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494109")).create();
   }
   private static ConceptDescriptor createDescriptorForExclusiveSpecialization() {
-    return new ConceptDescriptorBuilder("DataDictionaryDSL.structure.ExclusiveSpecialization", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be9L)).super_("DataDictionaryDSL.structure.StructureField").version(1).super_(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be7L)).parents("DataDictionaryDSL.structure.StructureField").parentIds(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be7L)).sourceNode(new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494185")).create();
+    return new ConceptDescriptorBuilder("DataDictionaryDSL.structure.ExclusiveSpecialization", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be9L)).super_("DataDictionaryDSL.structure.StructureRef").version(1).super_(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be7L)).parents("DataDictionaryDSL.structure.StructureRef").parentIds(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be7L)).sourceNode(new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494185")).create();
   }
   private static ConceptDescriptor createDescriptorForField() {
-    return new ConceptDescriptorBuilder("DataDictionaryDSL.structure.Field", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bd3L)).super_("DataDictionaryDSL.structure.AbstractField").version(1).super_(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bc1L)).parents("DataDictionaryDSL.structure.AbstractField", "jetbrains.mps.lang.core.structure.INamedConcept").parentIds(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bc1L), MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L)).childDescriptors(new ConceptDescriptorBuilder.Link(0x6855f68baae95d56L, "domain", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8b9dL), false, false, false, new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "7518186232693218646"))).children(new String[]{"domain"}, new boolean[]{false}).sourceNode(new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494163")).create();
+    return new ConceptDescriptorBuilder("DataDictionaryDSL.structure.Field", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bd3L)).super_("DataDictionaryDSL.structure.DataDictionaryFields").version(1).super_(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x2f612b8a38801ad5L)).parents("DataDictionaryDSL.structure.DataDictionaryFields").parentIds(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x2f612b8a38801ad5L)).childDescriptors(new ConceptDescriptorBuilder.Link(0x6855f68baae95d56L, "domain", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8b9dL), false, false, false, new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "7518186232693218646"))).children(new String[]{"domain"}, new boolean[]{false}).sourceNode(new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494163")).create();
   }
   private static ConceptDescriptor createDescriptorForFieldRef() {
-    return new ConceptDescriptorBuilder("DataDictionaryDSL.structure.FieldRef", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bdbL)).super_("DataDictionaryDSL.structure.AbstractField").version(1).super_(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bc1L)).parents("DataDictionaryDSL.structure.AbstractField").parentIds(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bc1L)).referenceDescriptors(new ConceptDescriptorBuilder.Ref(0x15def33a0dfb8bdcL, "fieldRef", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bd3L), false, new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494172"))).references("fieldRef").sourceNode(new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494171")).create();
+    return new ConceptDescriptorBuilder("DataDictionaryDSL.structure.FieldRef", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bdbL)).super_("DataDictionaryDSL.structure.Reference").version(1).super_(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be6L)).parents("DataDictionaryDSL.structure.Reference").parentIds(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be6L)).referenceDescriptors(new ConceptDescriptorBuilder.Ref(0x15def33a0dfb8bdcL, "fieldRef", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bd3L), false, new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494172"))).references("fieldRef").sourceNode(new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494171")).create();
   }
   private static ConceptDescriptor createDescriptorForNonExclusiveSpecialization() {
-    return new ConceptDescriptorBuilder("DataDictionaryDSL.structure.NonExclusiveSpecialization", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8beaL)).super_("DataDictionaryDSL.structure.StructureField").version(1).super_(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be7L)).parents("DataDictionaryDSL.structure.StructureField").parentIds(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be7L)).sourceNode(new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494186")).create();
+    return new ConceptDescriptorBuilder("DataDictionaryDSL.structure.NonExclusiveSpecialization", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8beaL)).super_("DataDictionaryDSL.structure.StructureRef").version(1).super_(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be7L)).parents("DataDictionaryDSL.structure.StructureRef").parentIds(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be7L)).sourceNode(new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494186")).create();
   }
   private static ConceptDescriptor createDescriptorForPredefined() {
     return new ConceptDescriptorBuilder("DataDictionaryDSL.structure.Predefined", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bb0L)).super_("DataDictionaryDSL.structure.Domain").version(1).super_(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8b9dL)).parents("DataDictionaryDSL.structure.Domain").parentIds(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8b9dL)).propertyDescriptors(new ConceptDescriptorBuilder.Prop(0x15def33a0dfb8bb8L, "type", new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494136")), new ConceptDescriptorBuilder.Prop(0x15def33a0dfb8bbaL, "length", new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494138"))).properties("type", "length").alias("", "Predefined domain. Example: integer (50).").sourceNode(new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494128")).create();
   }
+  private static ConceptDescriptor createDescriptorForReference() {
+    return new ConceptDescriptorBuilder("DataDictionaryDSL.structure.Reference", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be6L)).super_("jetbrains.mps.lang.core.structure.BaseConcept").version(1).super_(MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL)).parents("jetbrains.mps.lang.core.structure.BaseConcept").parentIds(MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL)).abstract_().sourceNode(new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494182")).create();
+  }
   private static ConceptDescriptor createDescriptorForRestriction() {
     return new ConceptDescriptorBuilder("DataDictionaryDSL.structure.Restriction", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bc6L)).super_("jetbrains.mps.lang.core.structure.BaseConcept").version(1).super_(MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL)).parents("jetbrains.mps.lang.core.structure.BaseConcept").parentIds(MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL)).propertyDescriptors(new ConceptDescriptorBuilder.Prop(0x15def33a0dfb8bc7L, "restriction", new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494151"))).properties("restriction").alias("", "Restriction on a field. Example: NOT NULL.").sourceNode(new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494150")).create();
   }
-  private static ConceptDescriptor createDescriptorForStructureField() {
-    return new ConceptDescriptorBuilder("DataDictionaryDSL.structure.StructureField", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be7L)).super_("DataDictionaryDSL.structure.AbstractStructure").version(1).super_(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be6L)).parents("DataDictionaryDSL.structure.AbstractStructure").parentIds(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be6L)).childDescriptors(new ConceptDescriptorBuilder.Link(0x47cfc78f1517b82dL, "structure", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be6L), false, true, false, new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "5174573914220116013"))).children(new String[]{"structure"}, new boolean[]{true}).abstract_().sourceNode(new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494183")).create();
+  private static ConceptDescriptor createDescriptorForSet() {
+    return new ConceptDescriptorBuilder("DataDictionaryDSL.structure.Set", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x2f612b8a387eda95L)).super_("DataDictionaryDSL.structure.StructureRef").version(1).super_(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be7L)).parents("DataDictionaryDSL.structure.StructureRef").parentIds(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be7L)).sourceNode(new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "3414057865176865429")).create();
+  }
+  private static ConceptDescriptor createDescriptorForStructureAsField() {
+    return new ConceptDescriptorBuilder("DataDictionaryDSL.structure.StructureAsField", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x2f612b8a387ed98eL)).super_("DataDictionaryDSL.structure.DataDictionaryFields").version(1).super_(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x2f612b8a38801ad5L)).parents("DataDictionaryDSL.structure.DataDictionaryFields").parentIds(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x2f612b8a38801ad5L)).childDescriptors(new ConceptDescriptorBuilder.Link(0x2f612b8a387ed98fL, "reference", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be6L), false, true, false, new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "3414057865176865167"))).children(new String[]{"reference"}, new boolean[]{true}).sourceNode(new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "3414057865176865166")).create();
+  }
+  private static ConceptDescriptor createDescriptorForStructureRef() {
+    return new ConceptDescriptorBuilder("DataDictionaryDSL.structure.StructureRef", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be7L)).super_("DataDictionaryDSL.structure.Reference").version(1).super_(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be6L)).parents("DataDictionaryDSL.structure.Reference").parentIds(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be6L)).referenceDescriptors(new ConceptDescriptorBuilder.Ref(0x2f612b8a38801abaL, "structureRef", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x2f612b8a387ed98eL), false, new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "3414057865176947386"))).references("structureRef").childDescriptors(new ConceptDescriptorBuilder.Link(0x2f612b8a3880d6d1L, "fields", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bdbL), true, true, false, new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "3414057865176995537"))).children(new String[]{"fields"}, new boolean[]{true}).abstract_().sourceNode(new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494183")).create();
   }
   private static ConceptDescriptor createDescriptorForUserDefined() {
     return new ConceptDescriptorBuilder("DataDictionaryDSL.structure.UserDefined", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bb1L)).super_("DataDictionaryDSL.structure.Domain").version(1).super_(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8b9dL)).parents("DataDictionaryDSL.structure.Domain", "jetbrains.mps.lang.core.structure.INamedConcept").parentIds(MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8b9dL), MetaIdFactory.conceptId(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L)).childDescriptors(new ConceptDescriptorBuilder.Link(0x15def33a0dfb8bbfL, "type", MetaIdFactory.conceptId(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bb0L), false, false, false, new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494143"))).children(new String[]{"type"}, new boolean[]{false}).alias("", "Domain defined by user. Example: IdentificationNumber [ string (12), NOT NULL].").sourceNode(new SNodePointer("r:258990bc-3076-42b9-9674-e412dba53e8a(DataDictionaryDSL.structure)", "1575964350294494129")).create();
