@@ -9,7 +9,9 @@
     <language id="bf590b41-a0a3-4576-9cd0-dea0bf554be3" name="DataDictionaryDSL">
       <concept id="3414057865176865429" name="DataDictionaryDSL.structure.Set" flags="ng" index="n7Z4v" />
       <concept id="3414057865176865166" name="DataDictionaryDSL.structure.StructureAsField" flags="ng" index="n7Z84">
-        <child id="3414057865176865167" name="reference" index="n7Z85" />
+        <child id="3414057865176865167" name="fieldRef" index="n7Z85" />
+        <child id="8241142510232113559" name="refToref" index="1FBZF$" />
+        <child id="8241142510231217757" name="structureReference" index="1FVoOI" />
       </concept>
       <concept id="1575964350294494128" name="DataDictionaryDSL.structure.Predefined" flags="ng" index="o9nya">
         <property id="1575964350294494138" name="length" index="o9ny0" />
@@ -21,7 +23,6 @@
       <concept id="1575964350294494184" name="DataDictionaryDSL.structure.Aggregation" flags="ng" index="o9nzi" />
       <concept id="1575964350294494183" name="DataDictionaryDSL.structure.StructureRef" flags="ng" index="o9nzt">
         <reference id="3414057865176947386" name="structureRef" index="nSj4K" />
-        <child id="3414057865176995537" name="fields" index="nSvPr" />
       </concept>
       <concept id="1575964350294494171" name="DataDictionaryDSL.structure.FieldRef" flags="ng" index="o9nzx">
         <reference id="1575964350294494172" name="fieldRef" index="o9nzA" />
@@ -34,6 +35,9 @@
       </concept>
       <concept id="1575964350294494150" name="DataDictionaryDSL.structure.Restriction" flags="ng" index="o9nzW">
         <property id="1575964350294494151" name="restriction" index="o9nzX" />
+      </concept>
+      <concept id="8241142510232113528" name="DataDictionaryDSL.structure.RefToFieldRef" flags="ng" index="1FBZCb">
+        <reference id="8241142510232113575" name="ref" index="1FBZFk" />
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
@@ -60,10 +64,22 @@
     </node>
     <node concept="n7Z84" id="2XxaSCSG4WB" role="o9nzp">
       <property role="TrG5h" value="Kupac" />
+      <node concept="1FBZCb" id="79uqRcpKUfm" role="1FBZF$">
+        <ref role="1FBZFk" node="2XxaSCSG4X7" resolve="naziv" />
+      </node>
+      <node concept="1FBZCb" id="79uqRcpKUfs" role="1FBZF$">
+        <ref role="1FBZFk" node="2XxaSCSG4Xn" resolve="adresa" />
+      </node>
       <node concept="o9nzx" id="2XxaSCSG4X7" role="n7Z85">
+        <property role="TrG5h" value="naziv" />
+        <ref role="o9nzA" node="2XxaSCSG4UP" resolve="KupacNaziv" />
+      </node>
+      <node concept="o9nzx" id="79uqRcpMXLL" role="n7Z85">
+        <property role="TrG5h" value="Ime" />
         <ref role="o9nzA" node="2XxaSCSG4UP" resolve="KupacNaziv" />
       </node>
       <node concept="o9nzx" id="2XxaSCSG4Xn" role="n7Z85">
+        <property role="TrG5h" value="adresa" />
         <ref role="o9nzA" node="2XxaSCSG4Vk" resolve="KupacAdresa" />
       </node>
     </node>
@@ -100,13 +116,22 @@
     <node concept="n7Z84" id="2XxaSCSG51u" role="o9nzp">
       <property role="TrG5h" value="Proizvod" />
       <node concept="o9nzx" id="2XxaSCSG52c" role="n7Z85">
+        <property role="TrG5h" value="id_p" />
         <ref role="o9nzA" node="2XxaSCSG4XU" resolve="ProizvodID" />
       </node>
       <node concept="o9nzx" id="2XxaSCSG52s" role="n7Z85">
+        <property role="TrG5h" value="naziv_p" />
         <ref role="o9nzA" node="2XxaSCSG4YU" resolve="ProizvodNaziv" />
       </node>
       <node concept="o9nzx" id="2XxaSCSG52$" role="n7Z85">
+        <property role="TrG5h" value="Cena" />
         <ref role="o9nzA" node="2XxaSCSG506" resolve="ProizvodCena" />
+      </node>
+      <node concept="1FBZCb" id="79uqRcpLaPf" role="1FBZF$">
+        <ref role="1FBZFk" node="2XxaSCSG52c" resolve="id_p" />
+      </node>
+      <node concept="1FBZCb" id="79uqRcpLaPl" role="1FBZF$">
+        <ref role="1FBZFk" node="2XxaSCSG52s" resolve="naziv_p" />
       </node>
     </node>
     <node concept="o9nzD" id="2XxaSCSG4Ue" role="o9nzp">
@@ -121,17 +146,22 @@
     </node>
     <node concept="n7Z84" id="2XxaSCSG5ad" role="o9nzp">
       <property role="TrG5h" value="StavkaRacuna" />
+      <node concept="o9nzx" id="79uqRcpMs5X" role="n7Z85">
+        <property role="TrG5h" value="StavkaIme" />
+        <ref role="o9nzA" node="2XxaSCSG4YU" resolve="ProizvodNaziv" />
+      </node>
+      <node concept="1FBZCb" id="79uqRcpLaPB" role="1FBZF$">
+        <ref role="1FBZFk" node="2XxaSCSG5b3" resolve="StavkaID" />
+      </node>
+      <node concept="1FBZCb" id="79uqRcpMs7e" role="1FBZF$">
+        <ref role="1FBZFk" node="79uqRcpMs5X" resolve="StavkaIme" />
+      </node>
       <node concept="o9nzx" id="2XxaSCSG5b3" role="n7Z85">
+        <property role="TrG5h" value="StavkaID" />
         <ref role="o9nzA" node="2XxaSCSG4Ue" resolve="RedniBrojStavke" />
       </node>
-      <node concept="o9nzi" id="2XxaSCSG5bc" role="n7Z85">
+      <node concept="o9nzi" id="79uqRcpMs5S" role="1FVoOI">
         <ref role="nSj4K" node="2XxaSCSG51u" resolve="Proizvod" />
-        <node concept="o9nzx" id="2XxaSCSG5bi" role="nSvPr">
-          <ref role="o9nzA" node="2XxaSCSG4YU" resolve="ProizvodNaziv" />
-        </node>
-        <node concept="o9nzx" id="2XxaSCSG5bq" role="nSvPr">
-          <ref role="o9nzA" node="2XxaSCSG506" resolve="ProizvodCena" />
-        </node>
       </node>
     </node>
     <node concept="o9nzD" id="2XxaSCSG5cr" role="o9nzp">
@@ -144,19 +174,17 @@
         </node>
       </node>
     </node>
-    <node concept="n7Z84" id="2XxaSCSG5ez" role="o9nzp">
+    <node concept="n7Z84" id="79uqRcpIbml" role="o9nzp">
       <property role="TrG5h" value="Racun" />
-      <node concept="o9nzx" id="2XxaSCSG5pB" role="n7Z85">
+      <node concept="o9nzx" id="79uqRcpIbmR" role="n7Z85">
+        <property role="TrG5h" value="racunID" />
         <ref role="o9nzA" node="2XxaSCSG5cr" resolve="BrojRacuna" />
       </node>
-      <node concept="n7Z4v" id="2XxaSCSGkxF" role="n7Z85">
+      <node concept="n7Z4v" id="79uqRcpIDJ1" role="1FVoOI">
         <ref role="nSj4K" node="2XxaSCSG5ad" resolve="StavkaRacuna" />
       </node>
-      <node concept="o9nzi" id="2XxaSCSGkxS" role="n7Z85">
+      <node concept="o9nzi" id="79uqRcpIUub" role="1FVoOI">
         <ref role="nSj4K" node="2XxaSCSG4WB" resolve="Kupac" />
-        <node concept="o9nzx" id="2XxaSCSGky0" role="nSvPr">
-          <ref role="o9nzA" node="2XxaSCSG4UP" resolve="KupacNaziv" />
-        </node>
       </node>
     </node>
   </node>

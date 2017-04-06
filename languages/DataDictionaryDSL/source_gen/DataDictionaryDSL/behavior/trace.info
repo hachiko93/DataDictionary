@@ -31,6 +31,9 @@
     <file name="Predefined_BehaviorDescriptor.java">
       <unit at="11,0,17,0" name="DataDictionaryDSL.behavior.Predefined_BehaviorDescriptor" />
     </file>
+    <file name="RefToFieldRef_BehaviorDescriptor.java">
+      <unit at="11,0,17,0" name="DataDictionaryDSL.behavior.RefToFieldRef_BehaviorDescriptor" />
+    </file>
     <file name="Reference_BehaviorDescriptor.java">
       <unit at="11,0,17,0" name="DataDictionaryDSL.behavior.Reference_BehaviorDescriptor" />
     </file>

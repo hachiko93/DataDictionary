@@ -538,12 +538,17 @@
                   <property role="TrG5h" value="reference" />
                   <node concept="3Tqbb2" id="2XxaSCSFf18" role="1tU5fm" />
                 </node>
-                <node concept="2OqwBi" id="2XxaSCSFgKT" role="1DdaDG">
-                  <node concept="1YBJjd" id="2XxaSCSFgtZ" role="2Oq$k0">
-                    <ref role="1YBMHb" node="2XxaSCSCS3x" resolve="structureRef" />
+                <node concept="2OqwBi" id="79uqRcpM7IL" role="1DdaDG">
+                  <node concept="2OqwBi" id="2XxaSCSFgKT" role="2Oq$k0">
+                    <node concept="1YBJjd" id="2XxaSCSFgtZ" role="2Oq$k0">
+                      <ref role="1YBMHb" node="2XxaSCSCS3x" resolve="structureRef" />
+                    </node>
+                    <node concept="3TrEf2" id="79uqRcpM7ct" role="2OqNvi">
+                      <ref role="3Tt5mk" to="sxi5:2XxaSCSw1EU" resolve="structureRef" />
+                    </node>
                   </node>
-                  <node concept="3Tsc0h" id="2XxaSCSFj50" role="2OqNvi">
-                    <ref role="3TtcxE" to="sxi5:2XxaSCSwdrh" resolve="fields" />
+                  <node concept="3Tsc0h" id="79uqRcpMa3O" role="2OqNvi">
+                    <ref role="3TtcxE" to="sxi5:2XxaSCSvHAf" resolve="fieldRef" />
                   </node>
                 </node>
               </node>
@@ -593,7 +598,7 @@
                     </node>
                   </node>
                   <node concept="3Tsc0h" id="2XxaSCSEZHW" role="2OqNvi">
-                    <ref role="3TtcxE" to="sxi5:2XxaSCSvHAf" resolve="reference" />
+                    <ref role="3TtcxE" to="sxi5:2XxaSCSvHAf" resolve="fieldRef" />
                   </node>
                 </node>
               </node>

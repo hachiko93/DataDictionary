@@ -18,6 +18,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private final ConceptPresentation props_FieldRef = new ConceptPresentationBuilder().create();
   private final ConceptPresentation props_NonExclusiveSpecialization = new ConceptPresentationBuilder().create();
   private final ConceptPresentation props_Predefined = new ConceptPresentationBuilder().create();
+  private final ConceptPresentation props_RefToFieldRef = new ConceptPresentationBuilder().create();
   private final ConceptPresentation props_Reference = new ConceptPresentationBuilder().create();
   private final ConceptPresentation props_Restriction = new ConceptPresentationBuilder().create();
   private final ConceptPresentation props_Set = new ConceptPresentationBuilder().create();
@@ -49,16 +50,18 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case 8:
         return props_Predefined;
       case 9:
-        return props_Reference;
+        return props_RefToFieldRef;
       case 10:
-        return props_Restriction;
+        return props_Reference;
       case 11:
-        return props_Set;
+        return props_Restriction;
       case 12:
-        return props_StructureAsField;
+        return props_Set;
       case 13:
-        return props_StructureRef;
+        return props_StructureAsField;
       case 14:
+        return props_StructureRef;
+      case 15:
         return props_UserDefined;
     }
     throw new IllegalStateException("Unknown concept " + c);

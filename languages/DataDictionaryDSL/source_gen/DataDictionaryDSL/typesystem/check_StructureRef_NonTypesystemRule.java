@@ -42,7 +42,7 @@ public class check_StructureRef_NonTypesystemRule extends AbstractNonTypesystemR
           }
           List<SNode> addedFields = ListSequence.fromList(new LinkedList<SNode>());
           List<SNode> structureFields = ListSequence.fromList(new LinkedList<SNode>());
-          for (SNode reference : SLinkOperations.getChildren(structureRef, MetaAdapterFactory.getContainmentLink(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be7L, 0x2f612b8a3880d6d1L, "fields"))) {
+          for (SNode reference : SLinkOperations.getChildren(SLinkOperations.getTarget(structureRef, MetaAdapterFactory.getReferenceLink(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be7L, 0x2f612b8a38801abaL, "structureRef")), MetaAdapterFactory.getContainmentLink(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x2f612b8a387ed98eL, 0x2f612b8a387ed98fL, "fieldRef"))) {
             {
               final SNode ref = reference;
               if (SNodeOperations.isInstanceOf(ref, MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bdbL, "DataDictionaryDSL.structure.FieldRef"))) {
@@ -50,7 +50,7 @@ public class check_StructureRef_NonTypesystemRule extends AbstractNonTypesystemR
               }
             }
           }
-          for (SNode reference : SLinkOperations.getChildren(SLinkOperations.getTarget(structureRef, MetaAdapterFactory.getReferenceLink(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be7L, 0x2f612b8a38801abaL, "structureRef")), MetaAdapterFactory.getContainmentLink(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x2f612b8a387ed98eL, 0x2f612b8a387ed98fL, "reference"))) {
+          for (SNode reference : SLinkOperations.getChildren(SLinkOperations.getTarget(structureRef, MetaAdapterFactory.getReferenceLink(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be7L, 0x2f612b8a38801abaL, "structureRef")), MetaAdapterFactory.getContainmentLink(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x2f612b8a387ed98eL, 0x2f612b8a387ed98fL, "fieldRef"))) {
             {
               final SNode ref = reference;
               if (SNodeOperations.isInstanceOf(ref, MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bdbL, "DataDictionaryDSL.structure.FieldRef"))) {

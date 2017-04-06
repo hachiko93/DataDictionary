@@ -57,20 +57,25 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
           break;
         case 7:
           if (true) {
-            return Collections.<ConceptEditor>singletonList(new Restriction_Editor());
+            return Collections.<ConceptEditor>singletonList(new RefToFieldRef_Editor());
           }
           break;
         case 8:
           if (true) {
-            return Collections.<ConceptEditor>singletonList(new Set_Editor());
+            return Collections.<ConceptEditor>singletonList(new Restriction_Editor());
           }
           break;
         case 9:
           if (true) {
-            return Collections.<ConceptEditor>singletonList(new StructureAsField_Editor());
+            return Collections.<ConceptEditor>singletonList(new Set_Editor());
           }
           break;
         case 10:
+          if (true) {
+            return Collections.<ConceptEditor>singletonList(new StructureAsField_Editor());
+          }
+          break;
+        case 11:
           if (true) {
             return Collections.<ConceptEditor>singletonList(new UserDefined_Editor());
           }
@@ -91,5 +96,5 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     }
     return res;
   }
-  private static final Map<SAbstractConcept, Integer> indices_xbvbvu_a0a = buildConceptIndices(MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be8L, "DataDictionaryDSL.structure.Aggregation"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bdfL, "DataDictionaryDSL.structure.DataDictionary"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be9L, "DataDictionaryDSL.structure.ExclusiveSpecialization"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bd3L, "DataDictionaryDSL.structure.Field"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bdbL, "DataDictionaryDSL.structure.FieldRef"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8beaL, "DataDictionaryDSL.structure.NonExclusiveSpecialization"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bb0L, "DataDictionaryDSL.structure.Predefined"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bc6L, "DataDictionaryDSL.structure.Restriction"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x2f612b8a387eda95L, "DataDictionaryDSL.structure.Set"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x2f612b8a387ed98eL, "DataDictionaryDSL.structure.StructureAsField"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bb1L, "DataDictionaryDSL.structure.UserDefined"));
+  private static final Map<SAbstractConcept, Integer> indices_xbvbvu_a0a = buildConceptIndices(MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be8L, "DataDictionaryDSL.structure.Aggregation"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bdfL, "DataDictionaryDSL.structure.DataDictionary"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8be9L, "DataDictionaryDSL.structure.ExclusiveSpecialization"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bd3L, "DataDictionaryDSL.structure.Field"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bdbL, "DataDictionaryDSL.structure.FieldRef"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8beaL, "DataDictionaryDSL.structure.NonExclusiveSpecialization"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bb0L, "DataDictionaryDSL.structure.Predefined"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x725e6b7319c19178L, "DataDictionaryDSL.structure.RefToFieldRef"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bc6L, "DataDictionaryDSL.structure.Restriction"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x2f612b8a387eda95L, "DataDictionaryDSL.structure.Set"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x2f612b8a387ed98eL, "DataDictionaryDSL.structure.StructureAsField"), MetaAdapterFactory.getConcept(0xbf590b41a0a34576L, 0x9cd0dea0bf554be3L, 0x15def33a0dfb8bb1L, "DataDictionaryDSL.structure.UserDefined"));
 }
